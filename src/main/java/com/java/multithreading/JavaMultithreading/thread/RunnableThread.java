@@ -1,4 +1,4 @@
-package com.java.multithreading.JavaMultithreading;
+package com.java.multithreading.JavaMultithreading.thread;
 
 public class RunnableThread implements  Runnable{
 
@@ -7,8 +7,7 @@ public class RunnableThread implements  Runnable{
         while(true){
             System.out.println("Runnable Thread"+ Thread.currentThread());
             try{
-
-                Thread.sleep(1000);
+                Thread.sleep(500);
             }catch (InterruptedException e){
                 e.printStackTrace();
             }

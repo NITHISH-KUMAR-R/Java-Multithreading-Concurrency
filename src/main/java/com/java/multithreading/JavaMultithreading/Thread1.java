@@ -4,13 +4,14 @@ public class Thread1 extends  Thread {
 
     @Override
     public void run(){
-        for(int i =0;i<10;i++){
+        System.out.println("Started sleeping for 3 seconds");
             try {
                 System.out.println("Normal Thread"+ Thread.currentThread());
-                Thread.sleep(500);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+        System.out.println("User Thread ending here");
         }
     }
-}
+

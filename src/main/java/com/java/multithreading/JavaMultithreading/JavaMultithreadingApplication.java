@@ -11,7 +11,19 @@ public class JavaMultithreadingApplication {
 
 		System.out.println("Main is starting");
 		Thread1 t1 = new Thread1();
+
+
+
+		Thread runThread = new Thread(new RunnableThread());
+
+		runThread.setDaemon(true);
 		t1.start();
+
+		runThread.start();
+		//thread3.start();
+
+		System.out.println("Main is Ending ");
+
 //		try{
 //			t1.join();
 //		}catch(InterruptedException e){
@@ -19,25 +31,18 @@ public class JavaMultithreadingApplication {
 //
 //		}
 
-
-		Thread runThread = new Thread(new RunnableThread());
-		runThread.start();
-
-		Thread thread3 = new Thread(()->{
-			for(int i =0;i<20;i++){
-                try {
-                    Thread.sleep(500);
-					System.out.println("Lambda Thread " +Thread.currentThread());
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-
-			}
-		}, "thread3");
-
-		thread3.start();
-
-		System.out.println("Main is Ending ");
+//
+//		Thread thread3 = new Thread(()->{
+//			for(int i =0;i<10;i++){
+//                try {
+//                    Thread.sleep(500);
+//					System.out.println("Lambda Thread " +Thread.currentThread());
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//
+//			}
+//		}, "thread3");
 
 	}
 
