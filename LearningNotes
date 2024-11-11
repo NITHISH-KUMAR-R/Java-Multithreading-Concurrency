@@ -76,3 +76,8 @@ instance of current class object is used as lock in method level synchronization
  Solution Using wait() and notify() in Java
 Use a shared buffer and synchronization to manage when the producer or consumer can proceed.
   The producer must wait if the buffer is full, and the consumer must wait if the buffer is empty.
+
+  BlockingQueue automatically handles the blocking and synchronization, eliminating the need for manual wait() and notify() calls.
+  The producer will block if the queue is full, and the consumer will block if the queue is empty.
+
+  rovides built-in methods like take() (for consumers) and put() (for producers) which block if the queue is empty (for consumers) or full (for producers).

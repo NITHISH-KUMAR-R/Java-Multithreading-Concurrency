@@ -1,10 +1,10 @@
 package com.java.multithreading.JavaMultithreading.producerConsumer;
 
 public class Producer implements   Runnable{
-    private BlockingQueue blockingQueue;
+    private SharedBuffer blockingQueue;
 
-    Producer(BlockingQueue blockingQueue) {
-        this.blockingQueue = blockingQueue;
+    Producer(SharedBuffer sharedBuffer) {
+        this.blockingQueue = sharedBuffer;
     }
 
     public void run(){
@@ -22,9 +22,9 @@ public class Producer implements   Runnable{
 
 
  class Consumer implements  Runnable {
-    private BlockingQueue blockingQueue;
+    private SharedBuffer blockingQueue;
 
-     Consumer(BlockingQueue blockingQueue) {
+     Consumer(SharedBuffer blockingQueue) {
         this.blockingQueue = blockingQueue;
     }
 
