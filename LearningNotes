@@ -80,4 +80,15 @@ Use a shared buffer and synchronization to manage when the producer or consumer 
   BlockingQueue automatically handles the blocking and synchronization, eliminating the need for manual wait() and notify() calls.
   The producer will block if the queue is full, and the consumer will block if the queue is empty.
 
-  rovides built-in methods like take() (for consumers) and put() (for producers) which block if the queue is empty (for consumers) or full (for producers).
+  Provides built-in methods like take() (for consumers) and put() (for producers) which block if the queue is empty (for consumers) or full (for producers).
+
+ Thread states :
+ NEW → RUNNABLE: When th is started using th.start().
+ RUNNABLE → TIMED_WAITING: When th executes Thread.sleep(1);.
+ TIMED_WAITING → RUNNABLE: After the sleep duration ends, th is ready to run again.
+ RUNNABLE → TERMINATED: When the run() method completes, and th finishes execution.
+
+
+ Yield();
+
+ Thread.join
