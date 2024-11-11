@@ -92,3 +92,9 @@ Use a shared buffer and synchronization to manage when the producer or consumer 
  Yield();
 
  Thread.join
+
+ Thread priorities - default is 5 is norm, min is 1 max is 10 - set priority getPriority()
+ Thread Scheduler - Time sliced or Round robin algorithm
+
+
+ DeadLocks
