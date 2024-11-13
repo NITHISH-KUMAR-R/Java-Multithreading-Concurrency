@@ -11,25 +11,22 @@ public class JavaMultithreadingApplication {
 
 		System.out.println("Main is starting");
 		Thread1 t1 = new Thread1();
-
-
-
 		Thread runThread = new Thread(new RunnableThread());
-
 		runThread.setDaemon(true);
-		t1.start();
 
+		try{
+			t1.join();
+		}catch(InterruptedException e){
+			e.printStackTrace();
+
+		}
+		t1.start();
 		runThread.start();
+
 		//thread3.start();
 
 		System.out.println("Main is Ending ");
 
-//		try{
-//			t1.join();
-//		}catch(InterruptedException e){
-//			e.printStackTrace();
-//
-//		}
 
 //
 //		Thread thread3 = new Thread(()->{

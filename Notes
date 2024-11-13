@@ -1,0 +1,117 @@
+Multitasking :
+Process based multitasking - VLC and painting
+thread based multitasking - ms words and format texting
+
+Two threads share the same address space
+context switching between threads is less expensive than switching between process
+The cost of communication between thread is relatively low
+
+Multitasking allows idle CPU time to be good to use
+
+At runtime threads in the program exist in common memory space and share data and code . compared to process threads
+are lightweight process
+They share the process running the program
+
+Main Thread
+UserThread
+Daemon Thread
+
+JVM never check whether daemon threads has finished the task . it only check user thread before terminating
+
+Thread cannot extend multiple classes  - doesnt support multiple inheritance
+But Runnable thread can implement multiple classes - support multiple interfaces
+Thread Class: Cannot extend multiple classes (no multiple inheritance of classes).
+Runnable Interface: Can be combined with other interfaces, allowing multiple inheritance of types.
+
+best choice is Multiple Interface means Runnable Thread
+----------------------------------------------------------------------------------------------------------------
+User Threads vs. Daemon Threads
+User Threads:
+User threads are primary threads in an application that keep running until they complete or are terminated.
+Java applications won’t terminate while any user thread is running;
+only when all user threads have completed will the JVM exit.
+Daemon Threads:
+Daemon threads, in contrast, are background threads supporting user threads.
+The JVM automatically terminates daemon threads when all user threads finish execution.
+Common daemon threads include garbage collection and monitoring threads in the JVM.
+----
+
+In Spring Boot Daemon Thread wont stop even if all user thread ends But in normal java main class daemon thread will stop after
+all user ends and exit from JVM
+-------
+Spring Boot application:
+In a Normal Java Application:
+When the main() method and all user threads complete, the JVM shuts down.
+Any daemon threads still running are terminated automatically when the JVM exits.
+The daemon thread stops as expected because the JVM does not wait for daemon threads to finish,
+meaning it exits immediately once no user threads remain.
+------
+In a Spring Boot Application:
+Spring Boot starts additional threads to manage the application context,
+such as monitoring, auto-configuration, and scheduling threads.
+Some of these are user threads that keep the JVM alive until the Spring Boot application context is explicitly closed.
+Even if your custom user threads finish, these Spring Boot-managed threads may keep the JVM running,
+allowing your daemon threads to continue running as well.
+This is why the daemon thread appears not to stop immediately in a Spring Boot application. The Spring container’s background processes keep the JVM alive, preventing it from exiting when your custom user threads end.
+
+
+Synchronization
+
+Any object can serve as a lock in synchronized blocks, including instances of wrapper classes (e.g., new Integer(1)).
+Intrinsic Lock: All synchronized methods in an object share the same intrinsic lock.
+Blocking: If one thread holds the lock in any synchronized method, other threads are blocked from accessing any other synchronized method on the same object.
+Synchronized Block: Requires an explicit lock object.
+Synchronized Method: No explicit lock is required, as it uses the intrinsic lock of the instance.
+""
+this key word is the lock ======
+instance of current class object is used as lock in method level synchronization internally : like (synchronization(this)
+ in all synchronized method lock is instance of current class object
+ ""
+
+
+ how to synchronize static method - for static method it wont accept this  - so just use clasname.class in synchronized block
+ staticCounter: Belongs to the class, shared across all instances, only one copy exists.
+ instanceCounter: Belongs to each individual instance, each instance has its own copy.
+
+
+ Thread safety - String buffer is thread safe - string builder is not thread safe.
+
+ volatile keyWord - Direct access from RAM not from Cache
+
+ Volatile Variable: private static volatile Singleton singletonInstance = null;
+ The volatile keyword ensures that the singletonInstance variable is not cached,
+ making sure that every thread reads the latest value of singletonInstance directly from memory.
+ This is essential in multithreaded scenarios to prevent multiple threads from creating separate instances.
+
+
+
+ Producer consumer Pattern
+ Producer: A thread that generates data and stores it in a shared buffer.
+ Consumer: A thread that consumes data from the shared buffer.
+ Buffer: A shared resource (like a queue) where the producer places data, and the consumer removes data.
+ Synchronization: To prevent race conditions and ensure the producer and consumer work correctly without interfering with each other.
+ Solution Using wait() and notify() in Java
+Use a shared buffer and synchronization to manage when the producer or consumer can proceed.
+  The producer must wait if the buffer is full, and the consumer must wait if the buffer is empty.
+
+  BlockingQueue automatically handles the blocking and synchronization, eliminating the need for manual wait() and notify() calls.
+  The producer will block if the queue is full, and the consumer will block if the queue is empty.
+
+  Provides built-in methods like take() (for consumers) and put() (for producers) which block if the queue is empty (for consumers) or full (for producers).
+
+ Thread states :
+ NEW → RUNNABLE: When th is started using th.start().
+ RUNNABLE → TIMED_WAITING: When th executes Thread.sleep(1);.
+ TIMED_WAITING → RUNNABLE: After the sleep duration ends, th is ready to run again.
+ RUNNABLE → TERMINATED: When the run() method completes, and th finishes execution.
+
+
+ Yield();
+
+ Thread.join
+
+ Thread priorities - default is 5 is norm, min is 1 max is 10 - set priority getPriority()
+ Thread Scheduler - Time sliced or Round robin algorithm
+
+
+ DeadLocks

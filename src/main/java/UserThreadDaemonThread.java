@@ -1,4 +1,4 @@
-public class Example {
+public class UserThreadDaemonThread {
     public static void main(String[] args) {
         // User thread example
         Thread userThread = new Thread(() -> {
