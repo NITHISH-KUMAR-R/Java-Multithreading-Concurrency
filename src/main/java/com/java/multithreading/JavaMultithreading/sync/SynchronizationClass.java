@@ -5,19 +5,22 @@ public class SynchronizationClass {
 
         Stack st = new Stack(5);
 
-        new Thread(()->{
+        Thread t1  = new Thread(()->{
             int counter =0;
-            while(++ counter <10){
+           for(int i =0;i<10;i++){
                 System.out.println("popped: "+st.pop());
             }
-        }).start();
-        new Thread(()->{
+        },"popThread");
+       Thread t2 =  new Thread(()->{
             int counter =0;
-            while(++ counter <10){
-                System.out.println("Pushed: "+st.push(45));
+           for(int i =0;i<10;i++){
+                System.out.println("Pushed: "+st.push(i));
             }
-        }).start();
+        },"PushThread;");
 
+      // t1.setPriority(5);
+       t2.start();
+       t1.start();
 
 
 
