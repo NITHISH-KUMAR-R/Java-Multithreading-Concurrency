@@ -115,3 +115,13 @@ Use a shared buffer and synchronization to manage when the producer or consumer 
 
 
  DeadLocks
+
+
+ Atomic variables and Volatile in java
+
+volatile is generally used to visibility problem - where one thread and see other thread updates from shared cache
+Atomic variables
+Atomic variables are part of the java.util.concurrent.atomic package and provide atomic (indivisible)
+operations on single variables. They guarantee atomicity and visibility without needing locks.
+
+
