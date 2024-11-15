@@ -124,4 +124,28 @@ Atomic variables
 Atomic variables are part of the java.util.concurrent.atomic package and provide atomic (indivisible)
 operations on single variables. They guarantee atomicity and visibility without needing locks.
 
+Completable Future:
+. What is CompletableFuture?
+CompletableFuture is an advanced concurrency utility introduced in Java 8 for building asynchronous and non-blocking programs.
+It allows developers to manage tasks that run in the background and provides methods to handle their results or errors.
+runAsync: Executes a task without returning a result.
+supplyAsync: Executes a task that returns a result.
+Both use the ForkJoinPool by default or a custom executor if specified.
 
+Method Types
+Transformation:
+thenApply: Transforms the result.
+thenApplyAsync: Asynchronously transforms the result.
+Consumption:
+thenAccept: Consumes the result (no transformation).
+thenRun: Executes a task without using the result.
+Combining:
+thenCombine: Combines results of two CompletableFutures.
+thenCompose: Chains one future to another based on the result of the first.
+. Real-World Applications
+Suitable for:
+Async I/O operations (e.g., API calls, database queries).
+Aggregating results from multiple services.
+Reducing response times in distributed systems.
+allOf: Waits for all CompletableFutures to complete.
+anyOf: Completes when the first CompletableFuture finishes
