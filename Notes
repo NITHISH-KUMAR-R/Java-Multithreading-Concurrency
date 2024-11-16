@@ -149,3 +149,8 @@ Aggregating results from multiple services.
 Reducing response times in distributed systems.
 allOf: Waits for all CompletableFutures to complete.
 anyOf: Completes when the first CompletableFuture finishes
+
+ForkJoinPool: invoke(obj of recursive extend class) fork() - worker thread compute() - main thread join()
+The ForkJoinPool efficiently manages threads to execute tasks in parallel.
+Designed to break tasks into smaller subtasks, execute them in parallel, and then combine the results efficiently.
+
