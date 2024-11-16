@@ -24,8 +24,12 @@ public class ForkJoinEx {
 
     public static void main(String[] args) {
         ForkJoinPool fork = new ForkJoinPool();
+        System.out.println(fork.getActiveThreadCount());
 
         FibonacciTask obj = new FibonacciTask(10);
+
         System.out.println(fork.invoke(obj));
+        System.out.println(fork.getActiveThreadCount());
+
     }
 }

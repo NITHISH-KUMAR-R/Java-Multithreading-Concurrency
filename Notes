@@ -154,3 +154,6 @@ ForkJoinPool: invoke(obj of recursive extend class) fork() - worker thread compu
 The ForkJoinPool efficiently manages threads to execute tasks in parallel.
 Designed to break tasks into smaller subtasks, execute them in parallel, and then combine the results efficiently.
 
+
+ReentrantReadWriteLock - one write Thread at a time ( same a reentrant lock) - multiple reader threads at a time;
+ReentrantLock - only one thread at a time can acquire a lock
