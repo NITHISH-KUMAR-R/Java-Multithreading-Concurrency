@@ -157,3 +157,11 @@ Designed to break tasks into smaller subtasks, execute them in parallel, and the
 
 ReentrantReadWriteLock - one write Thread at a time ( same a reentrant lock) - multiple reader threads at a time;
 ReentrantLock - only one thread at a time can acquire a lock
+
+ReadWriteLock -
+ReadWriteLock is a concurrency utility in Java that optimizes performance for scenarios where read operations are frequent compared to write operations.
+It provides two distinct locks:
+Read Lock: Allows multiple threads to read concurrently.
+Write Lock: Allows only one thread to write, ensuring exclusive access.
+Reentrant Locks:
+Both the read and write locks are reentrant, meaning the same thread can acquire the lock multiple times without causing a deadlock.
