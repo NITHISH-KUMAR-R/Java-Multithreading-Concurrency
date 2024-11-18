@@ -84,6 +84,15 @@ instance of current class object is used as lock in method level synchronization
  This is essential in multithreaded scenarios to prevent multiple threads from creating separate instances.
 
 
+Synchronization vs Volatile
+
+The volatile keyword in Java ensures that a variable’s value is always read from and written to the main memory,
+making sure that all threads have a consistent and up-to-date view of it.
+Key Points:
+Visibility: Guarantees that changes to a volatile variable are immediately visible to all threads.
+Prevents Caching: Ensures threads don't use cached versions of the variable, always fetching the latest value from memory.
+No Atomicity: Does not ensure thread-safety for complex operations (e.g., incrementing).
+Execution Order: Prevents reordering of read and write operations by the JVM or compiler.
 
  Producer consumer Pattern
  Producer: A thread that generates data and stores it in a shared buffer.
@@ -115,6 +124,7 @@ Use a shared buffer and synchronization to manage when the producer or consumer 
 
 
  DeadLocks
+ Deadlock Detection and Recovery
 
 
  Atomic variables and Volatile in java
@@ -165,3 +175,10 @@ Read Lock: Allows multiple threads to read concurrently.
 Write Lock: Allows only one thread to write, ensuring exclusive access.
 Reentrant Locks:
 Both the read and write locks are reentrant, meaning the same thread can acquire the lock multiple times without causing a deadlock.
+
+Starvation  - indefinite blocking -
+a process which is read to run can wait indefinitely because of low priority.
+A higher priority process prevent a low priority process from eve getting the CPU.
+Solution is Aging:::
+- method to ensure that process with lower priority will eventually complete their execution.
+ by gradually increase the priority of process that wait in the system for a long time

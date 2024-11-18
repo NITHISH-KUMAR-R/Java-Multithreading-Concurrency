@@ -14,12 +14,12 @@ public class Stack {
 
    // if we ar using in method level synchronized internally - it will be like
    // this(synchronized(this) - used as lock)
-    public  synchronized boolean push(int element){
+    public  boolean push(int element){
      synchronized (lock){
             if (isFull()) return false;
             ++stackTop;
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (Exception e) {
             }
             array[stackTop] = element;
@@ -32,7 +32,7 @@ public class Stack {
         int obj = array[stackTop];
         array[stackTop] = Integer.MIN_VALUE;
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (Exception e) {
         }
 

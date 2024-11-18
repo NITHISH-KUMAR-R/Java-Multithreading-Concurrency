@@ -18,6 +18,7 @@ public class Singleton {
         if(singletonInstance ==null){
             synchronized (Singleton.class){
                 if (singletonInstance ==null){
+                    System.out.println("HEllo");
                     singletonInstance = new Singleton();
                 }
             }
