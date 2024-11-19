@@ -165,8 +165,9 @@ The ForkJoinPool efficiently manages threads to execute tasks in parallel.
 Designed to break tasks into smaller subtasks, execute them in parallel, and then combine the results efficiently.
 
 
-ReentrantReadWriteLock - one write Thread at a time ( same a reentrant lock) - multiple reader threads at a time;
-ReentrantLock - only one thread at a time can acquire a lock
+ReentrantReadWriteLock 1WT10RT - one write Thread at a time ( same as reentrant lock) - multiple reader threads at a time;
+ReentrantLock - only one thread at a time can acquire a lock  - 1RWT
+
 
 ReadWriteLock -
 ReadWriteLock is a concurrency utility in Java that optimizes performance for scenarios where read operations are frequent compared to write operations.
@@ -182,3 +183,20 @@ A higher priority process prevent a low priority process from eve getting the CP
 Solution is Aging:::
 - method to ensure that process with lower priority will eventually complete their execution.
  by gradually increase the priority of process that wait in the system for a long time
+
+
+ CountDownLatch.
+ Answer:
+ CountDownLatch is a synchronization aid that allows one or more threads to wait until a set of
+ operations being performed in other threads completes.
+
+ What is the ThreadLocal class and how is it used?
+ Answer:
+ ThreadLocal provides thread-local variables.
+ Each thread accessing such a variable has its own, independently initialized copy of the variable.
+ ThreadLocal can be used to avoid sharing state between threads.
+
+ Explain Callable and Future in Java.
+ Answer:
+ Callable is similar to Runnable but can return a result and throw a checked exception.
+ Future represents the result of an asynchronous computation, allowing you to check if the computation is complete, retrieve the result, and cancel the computation.

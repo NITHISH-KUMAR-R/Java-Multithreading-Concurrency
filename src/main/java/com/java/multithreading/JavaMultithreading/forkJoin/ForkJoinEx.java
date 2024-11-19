@@ -15,8 +15,10 @@ class FibonacciTask  extends RecursiveTask<Integer>{
 
         FibonacciTask f1 = new FibonacciTask(n-1);
         FibonacciTask f2 =  new FibonacciTask(n-2);
-        f1.fork();
-        return f2.fork().join() + f1.join();
+//        f1.fork();
+//        f2.fork();
+
+        return f2.fork().join() + f1.fork().join();
     }
 }
 public class ForkJoinEx {
