@@ -200,3 +200,21 @@ Solution is Aging:::
  Answer:
  Callable is similar to Runnable but can return a result and throw a checked exception.
  Future represents the result of an asynchronous computation, allowing you to check if the computation is complete, retrieve the result, and cancel the computation.
+
+ hy is start() Used Instead of run()?
+ Concurrency: Calling start() ensures that the run() method is executed in a new thread,
+ allowing your program to achieve concurrency (multiple tasks executing in parallel).
+ Thread Lifecycle: The start() method is responsible for managing the lifecycle of the thread.
+ It triggers the thread's transition from the New state to the Runnable state,
+  which allows the Java Virtual Machine (JVM) to manage the actual execution of the thread.
+ What Happens If You Call run() Directly?
+ When you invoke run() directly, you bypass the thread management system.
+ The method is executed in the same thread (usually the main thread),
+ and the thread's lifecycle is not handled by the JVM. As a result,
+ no new thread is created, and the execution happens sequentially, just like any normal method call.
+
+
+ CyclicBarrier is reusable: After all threads reach the barrier and the action (if provided) is executed, the barrier is reset automatically,
+ and it can be used again. This allows you to reuse the same CyclicBarrier for multiple rounds of synchronization.
+ CountDownLatch is one-time use: Once the count reaches zero (i.e., once all threads have passed the latch),
+ it cannot be reset or reused. If you need to wait for a new set of events, you need to create a new CountDownLatch.

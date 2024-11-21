@@ -4,7 +4,7 @@ public class UserThreadDaemonThread {
     public static void main(String[] args) {
         // User thread example
         Thread userThread = new Thread(() -> {
-            System.out.println("User thread starts and will sleep for 3 seconds...");
+            System.out.println("User thread starts and will sleep for 3 seconds..."+Thread.currentThread().getName());
             try {
                 Thread.sleep(3000); // Simulate work
             } catch (InterruptedException e) {
@@ -28,6 +28,7 @@ public class UserThreadDaemonThread {
         daemonThread.setDaemon(true);
 
         userThread.start();
+        userThread.run();
         daemonThread.start();
 
         System.out.println("Main thread ends.");
