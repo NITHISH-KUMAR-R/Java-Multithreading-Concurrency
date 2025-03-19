@@ -28,7 +28,7 @@ public class Stack {
         }
     }
     public  int pop() {
-        synchronized (lock){if (isEmpty()) return Integer.MIN_VALUE;
+        synchronized (lock2){if (isEmpty()) return Integer.MIN_VALUE;
         int obj = array[stackTop];
         array[stackTop] = Integer.MIN_VALUE;
         try {
