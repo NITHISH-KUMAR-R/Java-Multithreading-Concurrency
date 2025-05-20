@@ -19,5 +19,8 @@ public class Main {
         CompletableFuture<Integer> ans = supply.thenApplyAsync(result -> result * 20).thenApplyAsync(result->result+5);
 
                                     ans.thenAccept(result -> System.out.println(result));
+
+
+        System.out.println("Total core processor: "+Runtime.getRuntime().availableProcessors());
     }
 }
