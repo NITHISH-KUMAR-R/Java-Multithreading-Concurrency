@@ -5,7 +5,6 @@ public class NumAlphabetPrinter {
     public String nithishLock = "nithish";
     public volatile  boolean isNumberTurn = true;
     Runnable r1 = ()->{
-
         for(int i =1;i<=26;i++){
             synchronized(nithishLock){
                 while(!isNumberTurn){

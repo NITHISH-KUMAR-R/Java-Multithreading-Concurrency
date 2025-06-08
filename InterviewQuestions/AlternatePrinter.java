@@ -6,8 +6,8 @@ public class AlternatePrinter {
     public static void main(String[] args) {
 
         Thread numThread = new Thread(()->{
+            synchronized (lock){
             for(int i =1;i<=26;i++){
-             synchronized (lock){
                  while(!isNumberTurn){
                      try{
                         lock.wait();
@@ -24,8 +24,9 @@ public class AlternatePrinter {
         });
 
         Thread letterThread = new Thread(()->{
-            for(char c = 'A' ;c<='Z';c++){
-                synchronized (lock){
+            synchronized (lock){
+
+                for(char c = 'A' ;c<='Z';c++){
                     while(isNumberTurn){
                         try{
                             lock.wait();

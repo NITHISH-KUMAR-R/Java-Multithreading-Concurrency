@@ -7,7 +7,6 @@ public class OddEven {
     public volatile  int i =0;
 
     Runnable r1 = ()->{
-
         while(i<40){
             synchronized (nithish) {
                 if (i % 2 == 0) {
